@@ -8,15 +8,14 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UISearchResultsUpdating {
+class SearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    func updateSearchResults(for searchController: UISearchController) {
-        print(1)
-    }
+    private var titledPlayers: TitledPlayers?
     
-
+    private var networking = Networking()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -27,13 +26,15 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
     private let searchController = UISearchController(searchResultsController: nil)
 
     private func setUpNavigationBar() {
-        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         self.definesPresentationContext = true
         navigationController?.navigationBar.prefersLargeTitles = true  
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
 
     }
+    
+
     
     /*
     // MARK: - Navigation
@@ -69,3 +70,20 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     
 }
+
+
+extension SearchViewController: UISearchBarDelegate
+{
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        //Hide Cancel
+        if let text = searchBar.text {
+            print("send request with " + text)
+        }
+    }
+    
+}
+
+
+
