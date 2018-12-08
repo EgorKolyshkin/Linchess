@@ -48,8 +48,9 @@ class SearchViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? UsedDetailedViewController {
-//            destination
+        if let destination = segue.destination as? UsedDetailedViewController,
+            let indexPath = tableView.indexPathForSelectedRow {
+            destination.user = self.titledPlayers?.players[indexPath.row] ?? "MatGod"
         }
     }
  
