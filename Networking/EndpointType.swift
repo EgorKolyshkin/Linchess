@@ -8,23 +8,20 @@
 
 import Foundation
 
-enum LichessApi {
-    case user(user: String)
-    case streamers()
+enum ChessApi {
+    case titledPlayers(abbreviation: String)
 }
 
 
-extension LichessApi: EndpointType {
+extension ChessApi: EndpointType {
     var baseURL: URL {
-        return URL(string: "https://lichess.org/")!
+        return URL(string: "https://api.chess.com/pub/")!
     }
     
     var path: String {
         switch self {
-        case .user(let userName):
-            return "api/user/\(userName)"
-        case .streamers():
-            return "streamer/live"
+        case .titledPlayers(let abbreviation):
+            return "titled/\(abbreviation)"
         }
     }
 }
