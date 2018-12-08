@@ -13,4 +13,5 @@ struct User: Decodable {
     let country: URL
     let name: String
     let followers: Int
+    let avatar: URL
 }
