@@ -10,6 +10,7 @@ import Foundation
 
 enum ChessApi {
     case titledPlayers(abbreviation: String)
+    case user(username: String)
 }
 
 
@@ -22,6 +23,8 @@ extension ChessApi: EndpointType {
         switch self {
         case .titledPlayers(let abbreviation):
             return "titled/\(abbreviation)"
+        case .user(let username):
+            return "player/\(username)"
         }
     }
 }
