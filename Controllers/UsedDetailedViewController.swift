@@ -17,14 +17,18 @@ class UsedDetailedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        avatarView.layer.cornerRadius = avatarView.bounds.width / 2
+        avatarView.clipsToBounds = true
         if let userName = userName {
             activityIndicator.startAnimating()
             networking.performNetworkTask(endpoint: ChessApi.user(username: userName), type: User.self)
             { [weak self] user in
                 DispatchQueue.main.async {
+                    self?.nameLabel.text = user.name ?? "User Name"
+                    self?.followersLabel.text = "followers: " + String(describing: user.followers ?? 0)
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicatorView.isHidden = true
                     self?.avatarImageURL = user.avatar
-                    self?.nameLabel.text = user.name
-                    self?.followersLabel.text = "followers: \(user.followers)"
                 }
             }
         }
@@ -54,8 +58,6 @@ class UsedDetailedViewController: UIViewController {
             DispatchQueue.main.async {
                 if let imageData = data {
                     self.avatarView.image = UIImage(data: imageData)
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicatorView.isHidden = true
                 }
             }
             

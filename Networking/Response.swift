@@ -19,7 +19,12 @@ struct Response {
 extension Response {
     public func decode<T: Decodable>(_ type: T.Type) -> T? {
         let jsonDecoder = JSONDecoder()
-        let response = try? jsonDecoder.decode(T.self, from: data)
-        return response
+        do {
+            let response = try jsonDecoder.decode(T.self, from: data)
+            return response
+        } catch let error {
+            print(error)
+            return nil
+        }
     }
 }
