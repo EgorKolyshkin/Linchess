@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" textLabel="ax9-dc-5D4" detailTextLabel="IJi-nI-2ve" rowHeight="62" style="IBUITableViewCellStyleValue1" id="Ghs-Mf-1mR">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerCell" textLabel="ax9-dc-5D4" detailTextLabel="IJi-nI-2ve" rowHeight="62" style="IBUITableViewCellStyleValue1" id="Ghs-Mf-1mR">
                                         <rect key="frame" x="0.0" y="28" width="375" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ghs-Mf-1mR" id="Fmj-jd-ko7">
@@ -69,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="905" y="751"/>
         </scene>
-        <!--Used Detailed View Controller-->
+        <!--User Detailed View Controller-->
         <scene sceneID="wLA-Xq-lJl">
             <objects>
-                <viewController id="ryI-zr-EHK" customClass="UsedDetailedViewController" customModule="Linchess" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ryI-zr-EHK" customClass="UserDetailedViewController" customModule="Linchess" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mD8-DW-pmd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

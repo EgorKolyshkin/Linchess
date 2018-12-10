@@ -8,11 +8,10 @@
 
 import UIKit
 
-class UsedDetailedViewController: UIViewController {
+class UserDetailedViewController: UIViewController {
     
     @IBOutlet weak var activityIndicatorView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     
     
     override func viewDidLoad() {
