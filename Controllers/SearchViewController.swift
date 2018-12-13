@@ -70,11 +70,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as? PlayerTableViewCell else { return UITableViewCell() }
         
-        guard let titled = titledPlayers else { return UITableViewCell() }
-        
-        cell.textLabel?.text = titled.players[indexPath.row]
+        cell.viewModel = viewModel.cellViewModel
         
         return cell
     }

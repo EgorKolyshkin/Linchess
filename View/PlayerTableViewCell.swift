@@ -12,7 +12,6 @@ class PlayerTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userName: UILabel!
     
-    
     public var viewModel: SearchTableViewCellModel? {
         didSet {
             guard let viewModel = viewModel else { return }

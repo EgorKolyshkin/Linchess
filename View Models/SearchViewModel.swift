@@ -24,7 +24,9 @@ class SearchViewModel {
         }
     }
     
-    public func cellViewModel(for index: Int) -> UITableViewCell  {
-        
+    public func cellViewModel(for index: Int) -> SearchTableViewCellModel? {
+        guard let titled = titledPlayers else { return nil }
+        let cellViewModel = SearchTableViewCellModel(with: titled.players[index])
+        return cellViewModel
     }
 }
