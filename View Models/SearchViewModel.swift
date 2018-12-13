@@ -17,6 +17,10 @@ class SearchViewModel {
         return titledPlayers?.players.count ?? 0
     }
     
+    public func player(for index: Int) -> String {
+        return titledPlayers?.players[index] ?? "GG"
+    }
+    
     public func getTitledUsers(for abbreviation: String, competion: (() -> Void)?) {
         networking.performNetworkTask(endpoint: ChessApi.titledPlayers(abbreviation: abbreviation), type: TitledPlayers.self) { [weak self] players in
             self?.titledPlayers = players

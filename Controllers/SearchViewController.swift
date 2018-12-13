@@ -42,22 +42,21 @@ class SearchViewController: UIViewController {
 
     }
     
-
-    
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UserDetailedViewController,
             let indexPath = tableView.indexPathForSelectedRow {
-            destination.userName = self.titledPlayers?.players[indexPath.row] ?? "MatGod"
+            destination.userName = viewModel.player(for: indexPath.row)
         }
     }
     
     
 }
 
+
+    // MARK: - Extensions
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -72,7 +71,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath) as? PlayerTableViewCell else { return UITableViewCell() }
         
-        cell.viewModel = viewModel.cellViewModel
+        cell.viewModel = viewModel.cellViewModel(for: indexPath.row)
         
         return cell
     }
