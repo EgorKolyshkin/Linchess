@@ -23,4 +23,8 @@ class SearchViewModel {
             competion?()
         }
     }
+    
+    public func cellViewModel(for index: Int) -> UITableViewCell  {
+        
+    }
 }
