@@ -19,23 +19,15 @@ import UIKit
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    private var titledPlayers: TitledPlayers? {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-    private var networking = Networking()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         setUpNavigationBar()
     }
+    
+    private let viewModel = SearchViewModel()
     
     private let searchController = UISearchController(searchResultsController: nil)
 
@@ -62,8 +54,8 @@ class SearchViewController: UIViewController {
             destination.userName = self.titledPlayers?.players[indexPath.row] ?? "MatGod"
         }
     }
- 
-
+    
+    
 }
 
 
@@ -74,7 +66,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titledPlayers?.players.count ?? 0
+        return viewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,13 +85,15 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension SearchViewController: UISearchBarDelegate
 {
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
         if var text = searchBar.text {
             text = text.uppercased()
-            networking.performNetworkTask(endpoint: ChessApi.titledPlayers(abbreviation: text), type: TitledPlayers.self) { [weak self] players in
-                self?.titledPlayers = players
+            viewModel.getTitledUsers(for: text) { [weak self] in
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
             }
         }
         self.searchController.isActive = false
