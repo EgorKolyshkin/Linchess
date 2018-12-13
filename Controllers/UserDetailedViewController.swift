@@ -31,7 +31,11 @@ class UserDetailedViewController: UIViewController {
     
     private var gameResponse: GameResonse? {
         didSet {
-            tableView.reloadData()
+            if gameResponse?.games.count == 0 {
+                tableViewBackgroundView.isHidden = false
+            } else {
+                tableView.reloadData()
+            }
         }
     }
     
@@ -72,7 +76,7 @@ class UserDetailedViewController: UIViewController {
         }
     }
     
-    private var userName: String?
+    public var userName: String?
     
     private func fetchAvatarImage() {
         

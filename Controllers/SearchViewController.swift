@@ -6,6 +6,14 @@
 //  Copyright © 2018 Егор. All rights reserved.
 //
 
+// TODO: ------------
+// Logirovanie v fail
+// Pdf generaciya
+// unit tests
+// dataBase: Core Data
+// + Napisat' kursach
+
+
 import UIKit
 
 class SearchViewController: UIViewController {
@@ -32,6 +40,7 @@ class SearchViewController: UIViewController {
     private let searchController = UISearchController(searchResultsController: nil)
 
     private func setUpNavigationBar() {
+        
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "GM, WGM, IM, WIM, FM, WFM, NM, WNM, CM, WCM"
         self.definesPresentationContext = true
@@ -50,7 +59,7 @@ class SearchViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? UserDetailedViewController,
             let indexPath = tableView.indexPathForSelectedRow {
-            destination.user = self.titledPlayers?.players[indexPath.row] ?? "MatGod"
+            destination.userName = self.titledPlayers?.players[indexPath.row] ?? "MatGod"
         }
     }
  
@@ -87,7 +96,8 @@ extension SearchViewController: UISearchBarDelegate
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
     {
-        if let text = searchBar.text {
+        if var text = searchBar.text {
+            text = text.uppercased()
             networking.performNetworkTask(endpoint: ChessApi.titledPlayers(abbreviation: text), type: TitledPlayers.self) { [weak self] players in
                 self?.titledPlayers = players
             }
@@ -96,6 +106,7 @@ extension SearchViewController: UISearchBarDelegate
     }
     
 }
+
 
 
 
