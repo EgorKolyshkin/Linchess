@@ -28,14 +28,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="61.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naA-ap-vPE">
-                                                    <rect key="frame" x="15" y="20" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naA-ap-vPE">
+                                                    <rect key="frame" x="15" y="21" width="345" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="naA-ap-vPE" firstAttribute="top" secondItem="Fmj-jd-ko7" secondAttribute="topMargin" constant="10" id="bzf-8d-FyK"/>
+                                                <constraint firstItem="naA-ap-vPE" firstAttribute="leading" secondItem="Fmj-jd-ko7" secondAttribute="leadingMargin" id="ew3-T5-RJB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="naA-ap-vPE" secondAttribute="bottom" constant="10" id="hTU-zp-ciW"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="naA-ap-vPE" secondAttribute="trailing" id="yct-nc-tLA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="userName" destination="naA-ap-vPE" id="lRg-hM-G6z"/>
